@@ -1,11 +1,16 @@
-{% if page_obj.has_other_pages %}
-  <div class="pagination">
+{% if is_paginated %}
+  <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
-      <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      <li class="page-item"><a class="page-link"
+                               href="?page={{ page_obj.previous_page_number }}"><-</a>
+      </li>
     {% endif %}
-    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    <li class="page-item active"><span class="page-link">{{ page_obj.number }} of {{ paginator.num_pages }}</span>
+    </li>
     {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}">Next</a>
+      <li class="page-item"><a class="page-link"
+                               href="?page={{ page_obj.next_page_number }}">-></a>
+      </li>
     {% endif %}
-  </div>
+  </ul>
 {% endif %}
